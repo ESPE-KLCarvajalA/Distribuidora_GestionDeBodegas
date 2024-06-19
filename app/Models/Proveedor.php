@@ -22,4 +22,13 @@ class Proveedor extends Model
         'productos_suministrados' => 'array',
         'bodegas_suministradas' => 'array',
     ];
+
+  // Relación con Producto
+
+  public function productos()
+  {
+      return $this->hasMany(Producto::class, 'proveedor_id', 'proveedor_id');
+  }
+
+
 }

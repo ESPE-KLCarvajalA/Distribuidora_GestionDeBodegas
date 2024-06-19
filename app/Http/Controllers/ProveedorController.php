@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
+use App\Models\Producto;
+
 
 class ProveedorController extends Controller
 {
@@ -35,10 +37,8 @@ class ProveedorController extends Controller
             'información_personal.email' => 'required|string|email|max:255',
             'información_personal.telefono' => 'required|string|max:15',
             'información_personal.dirección' => 'required|string|max:255',
-            'productos_suministrados' => 'required|array|min:1',
             'productos_suministrados.*.product_id' => 'required|string|max:255',
             'productos_suministrados.*.cantidad' => 'required|integer|min:1',
-            'bodegas_suministradas' => 'required|array|min:1',
             'bodegas_suministradas.*' => 'required|string|max:255',
         ]);
 
@@ -48,6 +48,17 @@ class ProveedorController extends Controller
             "message" => "Proveedor creado exitosamente",
             "type" => "success"
         ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Proveedor $proveedor)
+    {
+        // Cargar la relación productos para mostrar en la vista
+        $proveedor->load('productos');
+
+        return view('proveedores.show', compact('proveedor'));
     }
 
     /**
@@ -69,15 +80,13 @@ class ProveedorController extends Controller
             'información_personal.email' => 'required|string|email|max:255',
             'información_personal.telefono' => 'required|string|max:15',
             'información_personal.dirección' => 'required|string|max:255',
-            'productos_suministrados' => 'required|array|min:1',
             'productos_suministrados.*.product_id' => 'required|string|max:255',
             'productos_suministrados.*.cantidad' => 'required|integer|min:1',
-            'bodegas_suministradas' => 'required|array|min:1',
             'bodegas_suministradas.*' => 'required|string|max:255',
         ]);
-
+    
         $proveedor->update($validated);
-
+    
         return redirect()->route("proveedores.index")->with([
             "message" => "Proveedor actualizado exitosamente",
             "type" => "success"

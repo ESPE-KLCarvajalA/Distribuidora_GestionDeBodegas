@@ -26,8 +26,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $proveedores = Proveedor::all(); // Obtener todos los proveedores para el formulario de creación
-        return view('productos.create', compact('proveedores'));
+        // No se necesita pasar proveedores si no se va a seleccionar uno
+        return view('productos.create');
     }
 
     /**
@@ -43,7 +43,6 @@ class ProductoController extends Controller
             'nombre_producto' => 'required|string',
             'descripcion' => 'required|string',
             'precio' => 'required|numeric',
-            'proveedor_id' => 'required|string|exists:proveedors,_id',
         ]);
 
         Producto::create($request->all());
@@ -83,7 +82,6 @@ class ProductoController extends Controller
     public function edit($product_id)
     {
         $producto = Producto::where('product_id', $product_id)->first();
-        $proveedores = Proveedor::all(); // Obtener todos los proveedores para el formulario de edición
 
         if (!$producto) {
             return redirect()->route('productos.index')->with([
@@ -92,6 +90,7 @@ class ProductoController extends Controller
             ]);
         }
 
+ $proveedores = Proveedor::all(); // Obtener todos los proveedores
         return view('productos.edit', compact('producto', 'proveedores'));
     }
 
@@ -108,7 +107,6 @@ class ProductoController extends Controller
             'nombre_producto' => 'required|string',
             'descripcion' => 'required|string',
             'precio' => 'required|numeric',
-            'proveedor_id' => 'required|string|exists:proveedors,_id',
         ]);
 
         $producto = Producto::where('product_id', $product_id)->first();

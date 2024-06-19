@@ -1,5 +1,3 @@
-<!-- resources/views/productos/show.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
@@ -11,7 +9,7 @@
                 <h5 class="card-title">{{ $producto->nombre_producto }}</h5>
                 <p class="card-text"><strong>Descripción:</strong> {{ $producto->descripcion }}</p>
                 <p class="card-text"><strong>Precio:</strong> {{ $producto->precio }}</p>
-                <p class="card-text"><strong>Proveedor:</strong> {{ $producto->proveedor->nombre }}</p>
+                <p class="card-text"><strong>Proveedor:</strong> {{ $producto->proveedor ? $producto->proveedor->nombre : 'No tiene proveedor asociado' }}</p>
             </div>
         </div>
 

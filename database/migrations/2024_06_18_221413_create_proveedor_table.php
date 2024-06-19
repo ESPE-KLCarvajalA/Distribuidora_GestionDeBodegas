@@ -23,7 +23,7 @@ return new class extends Migration
                 $subcollection->string('dirección');
             });
             $collection->array('productos_suministrados', function ($subcollection) {
-                $subcollection->string('product_id');
+                $subcollection->string('product_id');  
                 $subcollection->integer('cantidad');
             });
             $collection->array('bodegas_suministradas');

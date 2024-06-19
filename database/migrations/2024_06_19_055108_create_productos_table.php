@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 use MongoDB\Laravel\Schema\Blueprint;
 
+
 return new class extends Migration
 {
     /**
@@ -18,14 +19,8 @@ return new class extends Migration
             $collection->string('nombre_producto');
             $collection->string('descripcion');
             $collection->decimal('precio', 8, 2);
-            $collection->string('proveedor_id');
+            //$collection->string('proveedor_id');
             $collection->timestamps();
-
-            // Referencia a proveedores
-            $collection->foreign('proveedor_id')
-                ->references('_id')
-                ->on('proveedor')
-                ->onDelete('cascade');
         });
     }
 
@@ -34,6 +29,5 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::connection('mongodb')->dropIfExists('productos');
-    }
+        Schema::connection('mongodb')->dropIfExists('productos');    }
 };
