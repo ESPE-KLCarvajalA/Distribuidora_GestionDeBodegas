@@ -27,4 +27,10 @@ class ClienteFinal extends Model
         'historial_compras' => 'array',
         'preferencias' => 'array',
     ];
+
+    // Relación con la colección de productos
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'product_id', 'historial_compras.product_id');
+    }
 }

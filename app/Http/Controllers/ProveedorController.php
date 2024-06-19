@@ -75,7 +75,6 @@ class ProveedorController extends Controller
     public function update(Request $request, Proveedor $proveedor)
     {
         $validated = $request->validate([
-            'proveedor_id' => 'required|string|max:255|unique:proveedor,proveedor_id,' . $proveedor->id,
             'nombre' => 'required|string|max:255',
             'información_personal.email' => 'required|string|email|max:255',
             'información_personal.telefono' => 'required|string|max:15',

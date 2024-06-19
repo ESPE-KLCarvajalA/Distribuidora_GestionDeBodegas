@@ -1,17 +1,11 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-//use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
 use MongoDB\Laravel\Schema\Blueprint;
-
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::connection('mongodb')->create('bodegas', function (Blueprint $collection) {
@@ -41,7 +35,7 @@ return new class extends Migration
                     $nestedSubcollection->string('product_id');
                     $nestedSubcollection->integer('cantidad');
                 });
-                $subcollection->string('dist_id');
+                $subcollection->string('distribuidor');
             });
 
             $collection->timestamps();

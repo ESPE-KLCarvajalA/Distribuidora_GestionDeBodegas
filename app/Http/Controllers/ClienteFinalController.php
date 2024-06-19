@@ -35,12 +35,10 @@ class ClienteFinalController extends Controller
             'informacion_contacto.email' => 'required|string|email|max:255',
             'informacion_contacto.telefono' => 'required|string|max:15',
             'informacion_contacto.direccion' => 'required|string|max:255',
-            'historial_compras' => 'required|array|min:1',
             'historial_compras.*.id_compra' => 'required|string|max:255',
             'historial_compras.*.product_id' => 'required|string|max:255',
             'historial_compras.*.cantidad' => 'required|integer|min:1',
             'historial_compras.*.fecha_compra' => 'required|date',
-            'preferencias' => 'required|array|min:1',
             'preferencias.*' => 'required|string|max:255',
         ]);
 
@@ -70,12 +68,10 @@ class ClienteFinalController extends Controller
             'informacion_contacto.email' => 'required|string|email|max:255',
             'informacion_contacto.telefono' => 'required|string|max:15',
             'informacion_contacto.direccion' => 'required|string|max:255',
-            'historial_compras' => 'required|array|min:1',
             'historial_compras.*.id_compra' => 'required|string|max:255',
             'historial_compras.*.product_id' => 'required|string|max:255',
             'historial_compras.*.cantidad' => 'required|integer|min:1',
             'historial_compras.*.fecha_compra' => 'required|date',
-            'preferencias' => 'required|array|min:1',
             'preferencias.*' => 'required|string|max:255',
         ]);
 

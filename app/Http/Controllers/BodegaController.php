@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Bodega;
 use App\Models\Proveedor;
 use App\Models\Producto;
-use App\Models\Distribuidor;
+
 
 class BodegaController extends Controller
 {
@@ -84,22 +84,17 @@ class BodegaController extends Controller
     public function update(Request $request, Bodega $bodega)
     {
         $validated = $request->validate([
-            'Bod_id' => 'required|string|max:255|unique:bodegas,Bod_id,' . $bodega->id,
             'ubicacion' => 'required|string|max:255',
             'capacidad' => 'required|integer',
-            'inventario_actual' => 'required|array',
             'inventario_actual.*.proveedor_id' => 'required|string|max:255',
             'inventario_actual.*.product_id' => 'required|string|max:255',
             'inventario_actual.*.cantidad' => 'required|integer',
-            'gerentes' => 'required|array',
             'gerentes.*.id' => 'required|string|max:255',
             'gerentes.*.nombre' => 'required|string|max:255',
             'gerentes.*.informacion_contacto.email' => 'required|string|email|max:255',
             'gerentes.*.informacion_contacto.telefono' => 'required|string|max:15',
-            'historial_envios' => 'required|array',
             'historial_envios.*.id' => 'required|string|max:255',
             'historial_envios.*.fecha' => 'required|date',
-            'historial_envios.*.productos_enviados' => 'required|array',
             'historial_envios.*.productos_enviados.*.product_id' => 'required|string|max:255',
             'historial_envios.*.productos_enviados.*.cantidad' => 'required|integer',
             'historial_envios.*.dist_id' => 'required|string|max:255'

@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Illuminate\Database\Eloquent\Model;
-
 use MongoDB\Laravel\Eloquent\Model;
 
 class Bodega extends Model
@@ -23,11 +21,7 @@ class Bodega extends Model
         'historial_envios' => 'array'
     ];
 
-    // Relación con Distribuidor
-    public function distribuidor()
-    {
-        return $this->belongsTo(Distribuidor::class, 'dist_id');
-    }
+    
 
       // Relación con Productos
     public function productos()
@@ -40,5 +34,5 @@ class Bodega extends Model
     {
         return $this->hasMany(Proveedor::class, 'proveedor_id');
     }
-}
 
+}
