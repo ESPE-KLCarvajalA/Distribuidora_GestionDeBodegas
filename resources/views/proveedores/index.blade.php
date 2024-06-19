@@ -26,8 +26,8 @@
                             <td>{{ $proveedor->proveedor_id }}</td>
                             <td>{{ $proveedor->nombre }}</td>
                             <td>
-                                <a href="{{ route('proveedores.show', $proveedor->proveedor_id) }}" class="btn btn-info btn-sm">Ver</a>
-                                <a href="{{ route('proveedores.edit', $proveedor->proveedor_id) }}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="{{ route('proveedores.show', $proveedor->id) }}" class="btn btn-info btn-sm">Ver</a>
+                            <a href="{{ route('proveedores.edit', $proveedor->id) }}" class="btn btn-primary btn-sm">Editar</a>
                                 <form action="{{ route('proveedores.destroy', $proveedor->proveedor_id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')

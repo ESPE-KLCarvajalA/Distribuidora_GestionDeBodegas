@@ -30,7 +30,8 @@
                     <td>{{ $producto->nombre_producto }}</td>
                     <td>{{ $producto->descripcion }}</td>
                     <td>{{ $producto->precio }}</td>
-                    <td>{{ $producto->proveedor ? $producto->proveedor->nombre : 'Sin proveedor' }}</td>                    <td>
+                    <td>{{ $producto->proveedor ? $producto->proveedor->nombre : 'Sin proveedor' }}</td>   
+                    <td>
                         <a href="{{ route('productos.show', $producto->product_id) }}" class="btn btn-info btn-sm">Ver</a>
                         <a href="{{ route('productos.edit', $producto->product_id) }}" class="btn btn-primary btn-sm">Editar</a>
                         <form action="{{ route('productos.destroy', $producto->product_id) }}" method="POST" style="display: inline;">

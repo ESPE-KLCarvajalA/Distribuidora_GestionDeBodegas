@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Proveedor;
 
 class ProveedorController extends Controller
- {/**
+{
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -20,7 +21,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('proveedores.form');
+        return view('proveedores.create');
     }
 
     /**
@@ -54,7 +55,7 @@ class ProveedorController extends Controller
      */
     public function edit(Proveedor $proveedor)
     {
-        return view('proveedores.form', compact('proveedor'));
+        return view('proveedores.edit', compact('proveedor'));
     }
 
     /**
@@ -63,7 +64,7 @@ class ProveedorController extends Controller
     public function update(Request $request, Proveedor $proveedor)
     {
         $validated = $request->validate([
-            'proveedor_id' => 'required|string|max:255|unique:proveedors,proveedor_id,' . $proveedor->_id,
+            'proveedor_id' => 'required|string|max:255|unique:proveedor,proveedor_id,' . $proveedor->id,
             'nombre' => 'required|string|max:255',
             'información_personal.email' => 'required|string|email|max:255',
             'información_personal.telefono' => 'required|string|max:15',
