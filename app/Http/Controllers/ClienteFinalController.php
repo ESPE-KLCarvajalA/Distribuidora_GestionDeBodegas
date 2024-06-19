@@ -12,8 +12,8 @@ class ClienteFinalController extends Controller
      */
     public function index()
     {
-        $clientesFinales = ClienteFinal::all();
-        return view('clientesfinales.index', compact('clientesFinales'));
+        $clientesfinales = ClienteFinal::all();
+        return view('clientesfinales.index', compact('clientesfinales'));
     }
 
     /**
