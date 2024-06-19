@@ -5,7 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\DistribuidorController;
-use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ClienteFinalController;
+use App\Http\Controllers\BodegaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,13 @@ Route::get('/distribuidores/{distribuidor}', [DistribuidorController::class, 'sh
 Route::get('/distribuidores/{distribuidor}/edit', [DistribuidorController::class, 'edit'])->name('distribuidores.edit');
 Route::put('/distribuidores/{distribuidor}', [DistribuidorController::class, 'update'])->name('distribuidores.update');
 Route::delete('/distribuidores/{distribuidor}', [DistribuidorController::class, 'destroy'])->name('distribuidores.destroy');
+
+
+
+// Rutas para ClienteFinal
+Route::get('/clientesfinales', [ClienteFinalController::class, 'index'])->name('clientesfinales.index');
+Route::get('/clientesfinales/create', [ClienteFinalController::class, 'create'])->name('clientesfinales.create');
+Route::post('/clientesfinales', [ClienteFinalController::class, 'store'])->name('clientesfinales.store');
+Route::get('/clientesfinales/{clientefinal}/edit', [ClienteFinalController::class, 'edit'])->name('clientesfinales.edit');
+Route::put('/clientesfinales/{clientefinal}', [ClienteFinalController::class, 'update'])->name('clientesfinales.update');
+Route::delete('/clientesfinales/{clientefinal}', [ClienteFinalController::class, 'destroy'])->name('clientesfinales.destroy');
