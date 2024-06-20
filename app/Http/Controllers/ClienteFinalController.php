@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClienteFinal;
+use App\Models\Producto;
 
 class ClienteFinalController extends Controller
 {
@@ -21,7 +22,8 @@ class ClienteFinalController extends Controller
      */
     public function create()
     {
-        return view('clientesfinales.create');
+        $productos = Producto::all(); // Obtener todos los productos
+        return view('clientesfinales.create', compact('productos'));
     }
 
     /**
@@ -35,7 +37,6 @@ class ClienteFinalController extends Controller
             'informacion_contacto.email' => 'required|string|email|max:255',
             'informacion_contacto.telefono' => 'required|string|max:15',
             'informacion_contacto.direccion' => 'required|string|max:255',
-            'historial_compras.*.id_compra' => 'required|string|max:255',
             'historial_compras.*.product_id' => 'required|string|max:255',
             'historial_compras.*.cantidad' => 'required|integer|min:1',
             'historial_compras.*.fecha_compra' => 'required|date',
@@ -50,12 +51,18 @@ class ClienteFinalController extends Controller
         ]);
     }
 
+    public function show(ClienteFinal $clientefinal)
+{
+    return view('clientesfinales.show', compact('clientefinal'));
+}
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(ClienteFinal $clientefinal)
     {
-        return view('clientesfinales.edit', compact('clientefinal'));
+        $productos = Producto::all(); // Obtener todos los productos
+        return view('clientesfinales.edit', compact('clientefinal', 'productos'));
     }
 
     /**
@@ -68,7 +75,6 @@ class ClienteFinalController extends Controller
             'informacion_contacto.email' => 'required|string|email|max:255',
             'informacion_contacto.telefono' => 'required|string|max:15',
             'informacion_contacto.direccion' => 'required|string|max:255',
-            'historial_compras.*.id_compra' => 'required|string|max:255',
             'historial_compras.*.product_id' => 'required|string|max:255',
             'historial_compras.*.cantidad' => 'required|integer|min:1',
             'historial_compras.*.fecha_compra' => 'required|date',

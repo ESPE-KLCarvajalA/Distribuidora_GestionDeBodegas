@@ -1,113 +1,104 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Editar Cliente Final</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('clientesfinales.update', $clientefinal->id_cliente) }}">
-                            @csrf
-                            @method('PUT')
-
-                            <div class="form-group">
-                                <label for="id_cliente">ID Cliente:</label>
-                                <input id="id_cliente" type="text" class="form-control @error('id_cliente') is-invalid @enderror" name="id_cliente" value="{{ $clientefinal->id_cliente }}" readonly>
-                                @error('id_cliente')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre', $clientefinal->nombre) }}" required autocomplete="nombre">
-                                @error('nombre')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input id="email" type="email" class="form-control @error('informacion_contacto.email') is-invalid @enderror" name="informacion_contacto[email]" value="{{ old('informacion_contacto.email', $clientefinal->informacion_contacto['email']) }}" required autocomplete="email">
-                                @error('informacion_contacto.email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="telefono">Teléfono:</label>
-                                <input id="telefono" type="text" class="form-control @error('informacion_contacto.telefono') is-invalid @enderror" name="informacion_contacto[telefono]" value="{{ old('informacion_contacto.telefono', $clientefinal->informacion_contacto['telefono']) }}" required autocomplete="telefono">
-                                @error('informacion_contacto.telefono')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="direccion">Dirección:</label>
-                                <input id="direccion" type="text" class="form-control @error('informacion_contacto.direccion') is-invalid @enderror" name="informacion_contacto[direccion]" value="{{ old('informacion_contacto.direccion', $clientefinal->informacion_contacto['direccion']) }}" required autocomplete="direccion">
-                                @error('informacion_contacto.direccion')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label>Historial de Compras:</label>
-                                <table class="table table-bordered" id="historial_compras_table">
-                                    <thead>
-                                        <tr>
-                                            <th>ID Compra</th>
-                                            <th>Producto ID</th>
-                                            <th>Cantidad</th>
-                                            <th>Fecha Compra</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($clientefinal->historial_compras as $index => $compra)
-                                            <tr>
-                                                <td><input type="text" class="form-control" name="historial_compras[{{ $index }}][id_compra]" value="{{ $compra['id_compra'] }}" required></td>
-                                                <td><input type="text" class="form-control" name="historial_compras[{{ $index }}][product_id]" value="{{ $compra['product_id'] }}" required></td>
-                                                <td><input type="number" class="form-control" name="historial_compras[{{ $index }}][cantidad]" value="{{ $compra['cantidad'] }}" required></td>
-                                                <td><input type="date" class="form-control" name="historial_compras[{{ $index }}][fecha_compra]" value="{{ $compra['fecha_compra'] }}" required></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                @error('historial_compras.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label>Preferencias:</label>
-                                @foreach ($clientefinal->preferencias as $index => $preferencia)
-                                    <input type="text" class="form-control mb-2" name="preferencias[{{ $index }}]" value="{{ $preferencia }}" required>
-                                @endforeach
-                                @error('preferencias.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Actualizar Cliente Final</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+    <h1>Editar Cliente Final</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-    </div>
+    @endif
+    <form action="{{ route('clientesfinales.update', $clientefinal->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="form-group">
+            <label for="id_cliente">ID Cliente</label>
+            <input type="text" name="id_cliente" class="form-control" value="{{ old('id_cliente', $clientefinal->id_cliente) }}" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="{{ old('nombre', $clientefinal->nombre) }}" required>
+        </div>
+        <div class="form-group">
+            <label for="informacion_contacto[email]">Email</label>
+            <input type="email" name="informacion_contacto[email]" class="form-control" value="{{ old('informacion_contacto.email', $clientefinal->informacion_contacto['email']) }}" required>
+        </div>
+        <div class="form-group">
+            <label for="informacion_contacto[telefono]">Teléfono</label>
+            <input type="text" name="informacion_contacto[telefono]" class="form-control" value="{{ old('informacion_contacto.telefono', $clientefinal->informacion_contacto['telefono']) }}" required>
+        </div>
+        <div class="form-group">
+            <label for="informacion_contacto[direccion]">Dirección</label>
+            <input type="text" name="informacion_contacto[direccion]" class="form-control" value="{{ old('informacion_contacto.direccion', $clientefinal->informacion_contacto['direccion']) }}" required>
+        </div>
+        <div class="form-group">
+            <label for="historial_compras">Historial de Compras</label>
+            <div id="historial_compras">
+                @foreach ($clientefinal->historial_compras as $index => $compra)
+                    <div class="historial_compra">
+                        <label for="historial_compras[{{ $index }}][product_id]">Producto</label>
+                        <select name="historial_compras[{{ $index }}][product_id]" class="form-control" required>
+                            <option value="">Seleccione un producto</option>
+                            @foreach ($productos as $producto)
+                                <option value="{{ $producto->id }}" {{ $compra['product_id'] == $producto->id ? 'selected' : '' }}>{{ $producto->nombre_producto }}</option>
+                            @endforeach
+                        </select>
+                        <label for="historial_compras[{{ $index }}][cantidad]">Cantidad</label>
+                        <input type="number" name="historial_compras[{{ $index }}][cantidad]" class="form-control" value="{{ old('historial_compras.' . $index . '.cantidad', $compra['cantidad']) }}" required>
+                        <label for="historial_compras[{{ $index }}][fecha_compra]">Fecha de Compra</label>
+                        <input type="date" name="historial_compras[{{ $index }}][fecha_compra]" class="form-control" value="{{ old('historial_compras.' . $index . '.fecha_compra', $compra['fecha_compra']) }}" required>
+                    </div>
+                @endforeach
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="addCompra()">Agregar Compra</button>
+        </div>
+        <div class="form-group">
+            <label for="preferencias">Preferencias</label>
+            @foreach ($clientefinal->preferencias as $index => $preferencia)
+                <input type="text" name="preferencias[]" class="form-control" value="{{ old('preferencias.' . $index, $preferencia) }}" required>
+            @endforeach
+            <button type="button" class="btn btn-secondary" onclick="addPreferencia()">Agregar Preferencia</button>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+
+<script>
+    let compraIndex = {{ count($clientefinal->historial_compras) }};
+
+    function addCompra() {
+        const historialComprasDiv = document.getElementById('historial_compras');
+        const newCompraDiv = document.createElement('div');
+        newCompraDiv.classList.add('historial_compra');
+        newCompraDiv.innerHTML = `
+            <label for="historial_compras[${compraIndex}][product_id]">Producto</label>
+            <select name="historial_compras[${compraIndex}][product_id]" class="form-control" required>
+                <option value="">Seleccione un producto</option>
+                @foreach ($productos as $producto)
+                    <option value="{{ $producto->id }}">{{ $producto->nombre_producto }}</option>
+                @endforeach
+            </select>
+            <label for="historial_compras[${compraIndex}][cantidad]">Cantidad</label>
+            <input type="number" name="historial_compras[${compraIndex}][cantidad]" class="form-control" required>
+            <label for="historial_compras[${compraIndex}][fecha_compra]">Fecha de Compra</label>
+            <input type="date" name="historial_compras[${compraIndex}][fecha_compra]" class="form-control" required>
+        `;
+        historialComprasDiv.appendChild(newCompraDiv);
+        compraIndex++;
+    }
+
+    function addPreferencia() {
+        const preferenciasDiv = document.querySelector('.form-group:last-of-type');
+        const newPreferenciaInput = document.createElement('input');
+        newPreferenciaInput.type = 'text';
+        newPreferenciaInput.name = 'preferencias[]';
+        newPreferenciaInput.classList.add('form-control');
+        newPreferenciaInput.required = true;
+        preferenciasDiv.insertBefore(newPreferenciaInput, preferenciasDiv.querySelector('button'));
+    }
+</script>
 @endsection

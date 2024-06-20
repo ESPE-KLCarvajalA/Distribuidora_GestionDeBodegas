@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-//use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
 use MongoDB\Laravel\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -22,7 +20,6 @@ return new class extends Migration
                 $subcollection->string('direccion');
             });
             $collection->array('historial_compras', function ($subcollection) {
-                $subcollection->string('id_compra');
                 $subcollection->string('product_id');
                 $subcollection->integer('cantidad');
                 $subcollection->date('fecha_compra');
@@ -30,8 +27,8 @@ return new class extends Migration
             $collection->array('preferencias');
             $collection->timestamps();
         });
-    }
 
+    }
 
     /**
      * Reverse the migrations.
