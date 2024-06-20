@@ -1,19 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    strong {
+        color: black;
+    }
+</style>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Editar Bodega</div>
-
+                <div class="card-header bg-primary">Editar Bodega</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('bodegas.update', $bodega->id) }}">
                         @csrf
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="Bod_id">ID de Bodega</label>
+                            <label for="Bod_id"><strong>ID de Bodega</strong></label>
                             <input type="text" class="form-control @error('Bod_id') is-invalid @enderror" id="Bod_id" name="Bod_id" value="{{ old('Bod_id', $bodega->Bod_id) }}" required>
                             @error('Bod_id')
                                 <span class="invalid-feedback" role="alert">
@@ -23,7 +27,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="ubicacion">Ubicación</label>
+                            <label for="ubicacion"><strong>Ubicación</strong></label>
                             <input type="text" class="form-control @error('ubicacion') is-invalid @enderror" id="ubicacion" name="ubicacion" value="{{ old('ubicacion', $bodega->ubicacion) }}" required>
                             @error('ubicacion')
                                 <span class="invalid-feedback" role="alert">
@@ -33,7 +37,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="capacidad">Capacidad</label>
+                            <label for="capacidad"><strong>Capacidad</strong></label>
                             <input type="number" class="form-control @error('capacidad') is-invalid @enderror" id="capacidad" name="capacidad" value="{{ old('capacidad', $bodega->capacidad) }}" required>
                             @error('capacidad')
                                 <span class="invalid-feedback" role="alert">
@@ -43,8 +47,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Inventario Actual</label>
-                            <table id="inventario_actual_table" class="table">
+                            <label><strong>Inventario Actual</strong></label>
+                            <table id="inventario_actual_table" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Proveedor ID</th>
@@ -68,8 +72,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Gerentes</label>
-                            <table id="gerentes_table" class="table">
+                            <label><strong>Gerentes</strong></label>
+                            <table id="gerentes_table" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -95,8 +99,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Historial de Envíos</label>
-                            <table id="historial_envios_table" class="table">
+                            <label><strong>Historial de Envíos</strong></label>
+                            <table id="historial_envios_table" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -112,12 +116,12 @@
                                         <td><input type="text" class="form-control" name="historial_envios[{{ $index }}][id]" value="{{ $envio['id'] }}" required></td>
                                         <td><input type="date" class="form-control" name="historial_envios[{{ $index }}][fecha]" value="{{ $envio['fecha'] }}" required></td>
                                         <td>
-                                            <table class="table">
+                                            <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>Product ID</th>
                                                         <th>Cantidad</th>
-                                                        <th><button type="button" class="btn btn-sm btn-primary" onclick="addProducto(this)">Agregar Producto</button></th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -140,13 +144,19 @@
                             <button type="button" class="btn btn-sm btn-primary" onclick="addEnvio()">Agregar Envío</button>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <div class="row mt-4 ">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                <a href="{{ route('bodegas.index') }}" class="btn btn-primary">Volver</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <script>
     // Funciones para agregar y eliminar filas y productos dinámicamente

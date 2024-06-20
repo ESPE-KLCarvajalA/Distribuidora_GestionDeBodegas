@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App de Productos</title>
+    <title>BRIKI</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -71,6 +71,7 @@
                 <a href="{{ route('productos.index') }}">Productos</a>
                 <a href="{{ route('proveedores.index') }}">Proveedores</a>
                 <a href="{{ route('bodegas.index') }}">Bodegas</a>
+                <a href="{{ route('clientesfinales.index') }}">Clientes</a>
                 @if (Route::has('login'))
                 @auth
                 <a href="{{ url('/home') }}">Mi Cuenta</a>
