@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  mongos:
+    image: mongo:latest
+    container_name: mongos
+    ports:
+      - "27017:27017"
+    command: mongos --configdb config_rs/26.134.209.7:27015,26.163.250.15:27015 --bind_ip_all
+    
+  
+

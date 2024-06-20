@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
@@ -57,7 +57,7 @@
                         </table>
                     </div>
                 </div>
-=======
+
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 style="color:black">Lista de Clientes Finales</h1>
@@ -68,7 +68,6 @@
             <div class="alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
                 {{ session('message') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
->>>>>>> 7c83cd99d5a806213acc99ed099daa77d5a96929
             </div>
         @endif
 
