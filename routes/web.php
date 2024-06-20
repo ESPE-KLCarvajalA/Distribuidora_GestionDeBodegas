@@ -20,6 +20,11 @@ use App\Http\Controllers\BodegaController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
 /*proveedor*/
 
 Route::get('/proveedores', [ProveedorController::class, 'index'])->name('proveedores.index');

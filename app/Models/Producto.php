@@ -11,7 +11,7 @@ use MongoDB\Laravel\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
-
+    
     protected $connection = 'mongodb'; // Conexión MongoDB
 
     protected $collection = 'productos'; // Nombre de la colección en MongoDB
@@ -25,5 +25,6 @@ class Producto extends Model
         'precio',
         
     ];
+    
 
 }

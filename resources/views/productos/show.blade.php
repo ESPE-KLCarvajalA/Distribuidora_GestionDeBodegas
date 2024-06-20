@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <link rel="stylesheet" href="../css/style.css"> 
+    <div class="content">
         <h1>Detalles del Producto</h1>
 
         <div class="card">
