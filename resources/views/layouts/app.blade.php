@@ -22,6 +22,7 @@
     .content {
         padding-bottom: .75rem;
         padding-top: .75rem;
+        color: #000;    
     }
 
     .header,
@@ -71,6 +72,10 @@
                 <a href="{{ route('productos.index') }}">Productos</a>
                 <a href="{{ route('proveedores.index') }}">Proveedores</a>
                 <a href="{{ route('bodegas.index') }}">Bodegas</a>
+                <a href="{{ route('clientesfinales.index') }}">Clientes</a>
+                <a href="{{ route('distribuidores.index') }}">Distribuidores</a>
+
+                
                 @if (Route::has('login'))
                 @auth
                 <a href="{{ url('/home') }}">Mi Cuenta</a>
@@ -86,13 +91,13 @@
     </div>
     <div class="content">
         @yield('content')
-        <div class="footer">
-            <p>Contacta con nosotros:</p>
-            <p>Email: contacto@distribuidora.com</p>
-            <p>Teléfono: +123 456 7890</p>
-            <p>Dirección: Calle Falsa 123, Santo Domingo, Ecuador</p>
-        </div>
     </div>
+   <!-- <div class="footer">
+        <p>Contacta con nosotros:</p>
+        <p>Email: contacto@distribuidora.com</p>
+        <p>Teléfono: +123 456 7890</p>
+        <p>Dirección: Calle Falsa 123, Santo Domingo, Ecuador</p>
+    </div> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 

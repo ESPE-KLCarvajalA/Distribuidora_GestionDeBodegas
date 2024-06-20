@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Lista de Clientes Finales</div>
+                    <div class="card-header">Lista de Clientes</div>
 
                     <div class="card-body">
                         @if (session('message'))
@@ -15,11 +15,11 @@
                         @endif
 
                         <div class="mb-3">
-                            <a href="{{ route('clientesfinales.create') }}" class="btn btn-success">Crear Cliente Final</a>
+                            <a href="{{ route('clientesfinales.create') }}" class="btn btn-primary justify-content-end">Crear Cliente</a>
                         </div>
 
                         <table class="table table-bordered">
-                            <thead>
+                        <thead class="table-dark">
                                 <tr>
                                     <th>ID Cliente</th>
                                     <th>Nombre</th>
@@ -39,7 +39,7 @@
                                         <td>{{ $cliente->informacion_contacto['direccion'] }}</td>
                                         <td>
                                             <a href="{{ route('clientesfinales.show', $cliente->id) }}" class="btn btn-sm btn-primary">Ver</a>
-                                            <a href="{{ route('clientesfinales.edit', $cliente->id) }}" class="btn btn-sm btn-info">Editar</a>
+                                            <a href="{{ route('clientesfinales.edit', $cliente->id) }}" class="btn btn-sm btn-primary">Editar</a>
                                             <form action="{{ route('clientesfinales.destroy', $cliente->id) }}" method="POST" style="display: inline-block;">
                                                 @csrf
                                                 @method('DELETE')

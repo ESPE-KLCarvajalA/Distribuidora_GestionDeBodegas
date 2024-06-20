@@ -12,6 +12,7 @@ body {
     padding-bottom: .75rem;
     padding-top: .75rem;
     background-color: black;
+    color: black;
 }
 .footer {
     background-color: #000;
@@ -34,4 +35,3 @@ body {
 .footer .social-icons a:hover {
     color: #27a776;
 }
-</style>

@@ -144,12 +144,12 @@
 
         <br><br>
         <hr>
-        <div class="footer">
-            <p>Contacta con nosotros:</p>
-            <p>Email: contacto@distribuidora.com</p>
-            <p>Teléfono: +123 456 7890</p>
-            <p>Dirección: Calle Falsa 123, Santo Domingo, Ecuador</p>
-        </div>
+    </div>
+    <div class="footer">
+        <p>Contacta con nosotros:</p>
+        <p>Email: contacto@distribuidora.com</p>
+        <p>Teléfono: +123 456 7890</p>
+        <p>Dirección: Calle Falsa 123, Santo Domingo, Ecuador</p>
     </div>
 </body>
 

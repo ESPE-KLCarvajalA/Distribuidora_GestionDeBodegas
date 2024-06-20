@@ -4,18 +4,22 @@
 
 @section('content')
     <div class="container">
+        
         <h2>Listado de Bodegas</h2>
-        <div class="mb-3">
-            <a href="{{ route('bodegas.create') }}" class="btn btn-success">Crear Bodega</a>
+        <div class="mb-4 d-flex justify-content-end">
+            <a href="{{ route('bodegas.create') }}" class="btn btn-primary">Crear Bodega</a>
         </div>
         @if (session('message'))
             <div class="alert alert-{{ session('type') }}">
                 {{ session('message') }}
             </div>
         @endif
-        <table class="table">
-            <thead>
-                <tr>
+
+        <div class="table-responsive">
+
+        <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
                     <th>ID de Bodega</th>
                     <th>Ubicación</th>
                     <th>Capacidad</th>
@@ -41,5 +45,6 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
     </div>
 @endsection
