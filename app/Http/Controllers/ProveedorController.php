@@ -12,10 +12,24 @@ class ProveedorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function  index(Request $request)
     {
-        $proveedores = Proveedor::all();
-        return view('proveedores.index', compact('proveedores'));
+        $searchName = $request->input('search_name');
+    $searchId = $request->input('search_id');
+
+    $query = Proveedor::query();
+
+    if ($searchName) {
+        $query->where('nombre', 'like', '%' . $searchName . '%');
+    }
+
+    if ($searchId) {
+        $query->where('proveedor_id', 'like', '%' . $searchId . '%');
+    }
+
+    $proveedores = $query->get();
+
+    return view('proveedores.index', compact('proveedores'));
     }
 
     /**

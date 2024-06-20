@@ -15,16 +15,12 @@ class Distribuidor extends Model
     protected $collection = 'distribuidor';
 
     protected $fillable = [
-        'dist_id',
-        'nombre',
-        'informacion_contacto',
-        'regiones_distribucion',
-        'productos_distribuidos',
-        'contratos',
-        'historial_entregas',
+        'dist_id', 'nombre', 'informacion_contacto', 'regiones_distribucion', 
+        'productos_distribuidos', 'contratos', 'historial_entregas'
     ];
 
     protected $casts = [
+        'informacion_contacto' => 'array',
         'regiones_distribucion' => 'array',
         'productos_distribuidos' => 'array',
         'contratos' => 'array',

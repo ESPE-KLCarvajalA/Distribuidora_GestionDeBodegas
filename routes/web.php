@@ -26,7 +26,8 @@ Route::get('/', function () {
 
 
 /*proveedor*/
-
+// web.php
+Route::resource('proveedores', ProveedorController::class);
 Route::get('/proveedores', [ProveedorController::class, 'index'])->name('proveedores.index');
 Route::get('/proveedores/create', [ProveedorController::class, 'create'])->name('proveedores.create');
 Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
@@ -36,6 +37,7 @@ Route::put('/proveedores/{proveedor}', [ProveedorController::class, 'update'])->
 Route::delete('/proveedores/{proveedor}', [ProveedorController::class, 'destroy'])->name('proveedores.destroy');
 
 // Rutas para listar, crear, mostrar, editar y eliminar productos
+Route::resource('productos', ProductoController::class);
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
 Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
 Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');

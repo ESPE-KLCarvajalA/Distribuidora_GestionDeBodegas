@@ -14,6 +14,14 @@
             </div>
         @endif
 
+        <!-- Formulario de búsqueda -->
+        <form action="{{ route('productos.index') }}" method="GET" class="mb-4">
+            <div class="input-group mb-2">
+                <input type="text" name="search" class="form-control" placeholder="Buscar por nombre de producto" value="{{ request('search') }}">
+            </div>
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
                 <thead class="table-dark">

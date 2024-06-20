@@ -13,11 +13,22 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+
+
+    // ProductosController.php
+
+public function index(Request $request)
+{
+    $search = $request->input('search');
+
+    if ($search) {
+        $productos = Producto::where('nombre_producto', 'like', '%' . $search . '%')->get();
+    } else {
         $productos = Producto::all();
-        return view('productos.index', compact('productos'));
     }
+
+    return view('productos.index', compact('productos'));
+}
 
     /**
      * Show the form for creating a new resource.

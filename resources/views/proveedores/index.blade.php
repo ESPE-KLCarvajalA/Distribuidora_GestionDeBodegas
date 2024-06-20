@@ -14,6 +14,19 @@
             </div>
         @endif
 
+        <!-- Formulario de búsqueda -->
+        <form action="{{ route('proveedores.index') }}" method="GET" class="mb-4 mt-3">
+            <div class="row">
+            <div class="col-6 input-group mb-2">
+                <input type="text" name="search_name" class="form-control" placeholder="Buscar por nombre de proveedor" value="{{ request('search_name') }}">
+            </div>
+            <div class="col-6 input-group mb-2">
+                <input type="text" name="search_id" class="form-control" placeholder="Buscar por ID de proveedor" value="{{ request('search_id') }}">
+            </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+
         <div class="table-responsive mt-3">
             <table class="table table-bordered table-hover">
                 <thead class="thead-dark">

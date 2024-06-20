@@ -106,6 +106,7 @@
 <body>
     <div class="content">
         <div class="header">
+            
             <h1>Distribuidora de Productos</h1>
             <h1>B R I K I </h1>
         </div>
