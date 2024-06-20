@@ -63,6 +63,7 @@ Route::post('/clientesfinales', [ClienteFinalController::class, 'store'])->name(
 Route::get('/clientesfinales/{clientefinal}/edit', [ClienteFinalController::class, 'edit'])->name('clientesfinales.edit');
 Route::put('/clientesfinales/{clientefinal}', [ClienteFinalController::class, 'update'])->name('clientesfinales.update');
 Route::delete('/clientesfinales/{clientefinal}', [ClienteFinalController::class, 'destroy'])->name('clientesfinales.destroy');
+Route::get('/clientesfinales/{clientefinal}', [ClienteFinalController::class, 'show'])->name('clientesfinales.show');
 
 
 // Rutas para Bodegas
