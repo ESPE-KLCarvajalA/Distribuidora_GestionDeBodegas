@@ -73,12 +73,10 @@
                 <a href="{{ route('proveedores.index') }}">Proveedores</a>
                 <a href="{{ route('bodegas.index') }}">Bodegas</a>
                 <a href="{{ route('clientesfinales.index') }}">Clientes</a>
-<<<<<<< HEAD
+
                 <a href="{{ route('distribuidores.index') }}">Distribuidores</a>
 
                 
-=======
->>>>>>> 7c83cd99d5a806213acc99ed099daa77d5a96929
                 @if (Route::has('login'))
                 @auth
                 <a href="{{ url('/home') }}">Mi Cuenta</a>
