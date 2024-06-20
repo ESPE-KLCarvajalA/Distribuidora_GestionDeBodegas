@@ -52,9 +52,10 @@ class ClienteFinalController extends Controller
     }
 
     public function show(ClienteFinal $clientefinal)
-{
-    return view('clientesfinales.show', compact('clientefinal'));
-}
+    {
+        $productos = Producto::all(); // Obtener todos los productos
+        return view('clientesfinales.show', compact('clientefinal', 'productos'));
+    }
 
     /**
      * Show the form for editing the specified resource.

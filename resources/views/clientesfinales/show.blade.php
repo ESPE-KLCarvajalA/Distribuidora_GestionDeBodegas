@@ -28,7 +28,7 @@
                             $producto = $productos->firstWhere('id', $compra['product_id']);
                         @endphp
                         <li>
-                            <strong>Producto:</strong> {{ $producto ? $producto->nombre_producto: 'Producto no encontrado' }}<br>
+                            <strong>Producto:</strong> {{ $producto ? $producto->nombre_producto : 'Producto no encontrado' }}<br>
                             <strong>Cantidad:</strong> {{ $compra['cantidad'] }}<br>
                             <strong>Fecha de Compra:</strong> {{ $compra['fecha_compra'] }}
                         </li>
@@ -57,12 +57,7 @@
         </div>
     </div>
 
-    <a href="{{ route('clientesfinales.edit', $clientefinal->id) }}" class="btn btn-primary mt-4">Editar</a>
-    <form action="{{ route('clientesfinales.destroy', $clientefinal->id) }}" method="POST" class="d-inline">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger mt-4" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
-    </form>
+    
     <a href="{{ route('clientesfinales.index') }}" class="btn btn-secondary mt-4">Volver</a>
 </div>
 @endsection

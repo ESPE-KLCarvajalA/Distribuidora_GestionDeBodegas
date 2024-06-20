@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
+    <div class="container">
+        
+        <h2>Listado de Bodegas</h2>
+        <div class="mb-4 d-flex justify-content-end">
+            <a href="{{ route('bodegas.create') }}" class="btn btn-primary">Crear Bodega</a>
+=======
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 style="color:black">Listado de Bodegas</h2>
             <a href="{{ route('bodegas.create') }}" class="btn btn-success">Crear Bodega</a>
+>>>>>>> 7c83cd99d5a806213acc99ed099daa77d5a96929
         </div>
 
         @if (session('message'))
@@ -15,14 +23,34 @@
         @endif
 
         <div class="table-responsive">
+<<<<<<< HEAD
+
+        <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                    <th>ID de Bodega</th>
+                    <th>Ubicación</th>
+                    <th>Capacidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($bodegas as $bodega)
+=======
             <table class="table table-hover table-bordered">
                 <thead class="table-dark">
+>>>>>>> 7c83cd99d5a806213acc99ed099daa77d5a96929
                     <tr>
                         <th>ID de Bodega</th>
                         <th>Ubicación</th>
                         <th>Capacidad</th>
                         <th>Acciones</th>
                     </tr>
+<<<<<<< HEAD
+                @endforeach
+            </tbody>
+        </table>
+=======
                 </thead>
                 <tbody>
                     @foreach ($bodegas as $bodega)
@@ -43,6 +71,7 @@
                     @endforeach
                 </tbody>
             </table>
+>>>>>>> 7c83cd99d5a806213acc99ed099daa77d5a96929
         </div>
     </div>
 @endsection
