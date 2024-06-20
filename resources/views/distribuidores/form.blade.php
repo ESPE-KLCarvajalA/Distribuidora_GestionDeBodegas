@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    label {
+        color: black;
+    }
+</style>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ isset($distribuidor) ? 'Editar Distribuidor' : 'Crear Distribuidor' }}</div>
+                    <div class="card-header bg-primary">{{ isset($distribuidor) ? 'Editar Distribuidor' : 'Crear Distribuidor' }}</div>
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -76,6 +81,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">{{ isset($distribuidor) ? 'Actualizar' : 'Crear' }}</button>
                             <a href="{{ route('distribuidores.index') }}" class="btn btn-secondary">Cancelar</a>
+                            <a href="{{ route('distribuidores.index') }}" class="btn btn-primary">Volver</a>
                         </form>
                     </div>
                 </div>

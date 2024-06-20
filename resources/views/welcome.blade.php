@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Distribuidora de Productos</title>
+    <title>Distribuidora Briki</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -106,7 +106,8 @@
 <body>
     <div class="content">
         <div class="header">
-            <h2>Distribuidora de Productos</h2>
+            <h1>Distribuidora de Productos</h1>
+            <h1>B R I K I </h1>
         </div>
         <hr>
         <div class="images">
@@ -135,9 +136,15 @@
                 </a>
             </div>
             <div class="card">
-                <a href="#">
+                <a href="{{ route('distribuidores.index') }}">
                     <h3>Distribuidores</h3>
                     <p>Encuentra nuestros distribuidores</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{{ route('clientesfinales.index') }}">
+                    <h3>Clientes</h3>
+                    <p>Encuentra nuestros Clientes</p>
                 </a>
             </div>
         </div>

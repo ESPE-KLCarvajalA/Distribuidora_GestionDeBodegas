@@ -1,43 +1,55 @@
-<!-- resources/views/proveedores/show.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Detalles del Proveedor</h1>
+<!-- Asegúrate de que la hoja de estilos personalizada esté correctamente referenciada -->
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-        <div>
-            <strong>ID del Proveedor:</strong> {{ $proveedor->proveedor_id }}
-        </div>
-        <div>
-            <strong>Nombre:</strong> {{ $proveedor->nombre }}
-        </div>
-        <div>
-            <strong>Email:</strong> {{ $proveedor->información_personal['email'] }}
-        </div>
-        <div>
-            <strong>Teléfono:</strong> {{ $proveedor->información_personal['telefono'] }}
-        </div>
-        <div>
-            <strong>Dirección:</strong> {{ $proveedor->información_personal['dirección'] }}
-        </div>
-        <div>
-            <strong>Productos Suministrados:</strong>
-            <ul>
-                @foreach ($proveedor->productos_suministrados as $producto)
-                    <li>ID: {{ $producto['product_id'] }}, Cantidad: {{ $producto['cantidad'] }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <div>
-            <strong>Bodegas Suministradas:</strong>
-            <ul>
-                @foreach ($proveedor->bodegas_suministradas as $bodega)
-                    <li>{{ $bodega }}</li>
-                @endforeach
-            </ul>
-        </div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">Detalles del Producto</div>
 
-        <a href="{{ route('proveedores.index') }}" class="btn btn-primary mt-3">Volver al Listado</a>
+                <div class="card-body">
+                    <div>
+                        <strong class="text-dark">ID del Proveedor:</strong> <span class="text-dark">{{ $proveedor->proveedor_id }}</span>
+                    </div>
+                    <div>
+                        <strong class="text-dark">Nombre:</strong> <span class="text-dark">{{ $proveedor->nombre }}</span>
+                    </div>
+                    <div>
+                        <strong class="text-dark">Email:</strong> <span class="text-dark">{{ $proveedor->información_personal['email'] }}</span>
+                    </div>
+                    <div>
+                        <strong class="text-dark">Teléfono:</strong> <span class="text-dark">{{ $proveedor->información_personal['telefono'] }}</span>
+                    </div>
+                    <div>
+                        <strong class="text-dark">Dirección:</strong> <span class="text-dark">{{ $proveedor->información_personal['dirección'] }}</span>
+                    </div>
+                    <div>
+                        <strong class="text-dark">Productos Suministrados:</strong>
+                        <ul>
+                            @foreach ($proveedor->productos_suministrados as $producto)
+                            <li><strong class="text-dark">ID:</strong> <span class="text-dark">{{ $producto['product_id'] }}</span>, <strong class="text-dark">Cantidad:</strong> <span class="text-dark">{{ $producto['cantidad'] }}</span></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div>
+                        <strong class="text-dark">Bodegas Suministradas:</strong>
+                        <ul>
+                            @foreach ($proveedor->bodegas_suministradas as $bodega)
+                            <li><span class="text-dark">{{ $bodega }}</span></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="{{ route('proveedores.index') }}" class="btn btn-primary">Volver al Listado</a>
+            </div>
+            
+        </div>
     </div>
+</div>
 @endsection

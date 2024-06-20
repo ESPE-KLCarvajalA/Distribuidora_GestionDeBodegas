@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 style="color:black">Listado de Productos</h1>
-            <a href="{{ route('productos.create') }}" class="btn btn-primary">Crear Nuevo Producto</a>
+            <a href="{{ route('productos.create') }}" class="btn btn-success">Crear Nuevo Producto</a>
         </div>
 
         @if (session('message'))
@@ -33,8 +33,8 @@
                             <td>{{ $producto->descripcion }}</td>
                             <td>{{ $producto->precio }}</td>
                             <td>
-                                <a href="{{ route('productos.show', $producto->product_id) }}" class="btn btn-primary btn-sm">Ver</a>
-                                <a href="{{ route('productos.edit', $producto->product_id) }}" class="btn btn-primary btn-sm">Editar</a>
+                                <a href="{{ route('productos.show', $producto->product_id) }}" class="btn btn-info btn-sm">Ver</a>
+                                <a href="{{ route('productos.edit', $producto->product_id) }}" class="btn btn-warning btn-sm">Editar</a>
                                 <form action="{{ route('productos.destroy', $producto->product_id) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
